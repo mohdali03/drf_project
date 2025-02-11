@@ -1,7 +1,4 @@
-# Django git commit -m "first commit"
-git branch -M main
-git remote add origin git@github.com:mohdali03/drf_project.git
-git push -u origin main
+# Django DRF Project
 
 This project is built using Django and Django REST Framework (DRF) to provide CRUD operations (Create, Read, Update, Delete) through RESTful APIs.
 
@@ -120,69 +117,3 @@ python manage.py test
 ## License
 
 This project is licensed under the MIT License.
-## Snippet CRUD Operations
-
-This section documents the API endpoints for performing CRUD operations on the Snippet model.
-
-### Endpoints
-
-- **List & Create Snippets:**  
-    URL: `/api/snippets/`  
-    Use this endpoint to retrieve all snippets or create a new snippet.
-
-    ```python
-    from rest_framework import generics
-    from .models import Snippet
-    from .serializers import SnippetSerializer
-
-    class SnippetListCreateView(generics.ListCreateAPIView):
-            queryset = Snippet.objects.all()
-            serializer_class = SnippetSerializer
-    ```
-
-- **Retrieve, Update & Delete a Snippet:**  
-    URL: `/api/snippets/<int:pk>/`  
-    Use this endpoint to retrieve a specific snippet by its primary key, update its details, or delete it.
-
-    ```python
-    from rest_framework import generics
-
-    class SnippetDetailView(generics.RetrieveUpdateDestroyAPIView):
-            queryset = Snippet.objects.all()
-            serializer_class = SnippetSerializer
-    ```
-
-### Example Serializer for Snippet
-
-Below is an example serializer for the Snippet model. Customize the fields as required.
-
-```python
-from rest_framework import serializers
-from .models import Snippet
-
-class SnippetSerializer(serializers.ModelSerializer):
-        class Meta:
-                model = Snippet
-                fields = ['id', 'created', 'title', 'code', 'linenos', 'language', 'style']
-```
-
-### Model Reference
-
-For context, the Snippet model is structured as follows:
-
-```python
-from django.db import models
-
-class Snippet(models.Model):
-        created  = models.DateField(auto_now_add=True)
-        title = models.CharField(max_length=100, blank=True, default="Defualt Title")
-        code = models.TextField()
-        linenos = models.BooleanField(default=False)
-        language = models.CharField(choices=LANGUAGE_CHOICES, default='python', max_length=100)
-        style = models.CharField(choices=STYLE_CHOICES, default='freindly', max_length=100)
-        
-        class Meta:
-                ordering = ['created']
-```
-
-Ensure you configure your URL routing to include these endpoints so they can be accessed via the defined URLs.
