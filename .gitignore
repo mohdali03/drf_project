@@ -1,0 +1,49 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Django/DRF specific files
+*.log
+local_settings.py
+db.sqlite3
+*.pot
+
+# Migrations (if you prefer not to track them)
+*/migrations/*
+
+# Virtual environments
+env/
+venv/
+ENV/
+.venv/
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# PyCharm project files
+.idea/
+
+# VS Code settings
+.vscode/
+
+# macOS specific
+.DS_Store
+
+# Windows thumbnail cache files
+Thumbs.db
